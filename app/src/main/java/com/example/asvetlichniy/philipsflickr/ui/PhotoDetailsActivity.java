@@ -32,13 +32,13 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     private TextView photoDescription;
     private TextView posted;
     private TextView lastUpdated;
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_details);
         initViews();
+        setupToolbar();
         Intent intent = getIntent();
         if (intent != null) {
             getPhotoDetails(intent.getStringExtra(Utils.EXTRA_PHOTO_ID), intent.getStringExtra
@@ -64,7 +64,10 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         posted = (TextView) findViewById(R.id.date_posted);
         photoDescription = (TextView) findViewById(R.id.photo_description);
         lastUpdated = (TextView) findViewById(R.id.last_updated);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new OnClickListener() {
@@ -84,7 +87,7 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     private class GetPhotoInfoListener implements RequestListener<Photo> {
         @Override
         public void onRequestFailure(SpiceException e) {
-            // TODO Show error
+            // Do Nothing
         }
 
         @Override

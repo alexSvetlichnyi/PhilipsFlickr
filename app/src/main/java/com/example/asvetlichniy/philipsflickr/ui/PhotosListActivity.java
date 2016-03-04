@@ -29,7 +29,7 @@ import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
-public class MainActivity extends AppCompatActivity implements OnPhotoSelectedListener {
+public class PhotosListActivity extends AppCompatActivity implements OnPhotoSelectedListener {
     @NonNull
     private SpiceManager spiceManager = new SpiceManager(JacksonSpringAndroidSpiceService.class);
     private PhotosAdapter photosAdapter;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSelectedLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_photo_list);
         initViews();
         initPhotosList();
     }
@@ -108,13 +108,13 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSelectedLi
         menuInflater.inflate(R.menu.menu_main, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context
+        SearchManager searchManager = (SearchManager) PhotosListActivity.this.getSystemService(Context
                 .SEARCH_SERVICE);
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
         }
         if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(PhotosListActivity.this.getComponentName()));
             searchView.setOnQueryTextListener(onSearchTextListener);
         }
         return super.onCreateOptionsMenu(menu);

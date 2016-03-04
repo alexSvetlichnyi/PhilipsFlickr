@@ -4,6 +4,9 @@ import com.googlecode.flickrjandroid.photos.Photo;
 import com.googlecode.flickrjandroid.photos.PhotosInterface;
 import com.octo.android.robospice.request.SpiceRequest;
 
+/**
+ * Task for getting photo info from server.
+ */
 public class GetPhotoInfoTask extends SpiceRequest<Photo> {
 
     private PhotosInterface photosInterface;

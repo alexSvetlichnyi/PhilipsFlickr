@@ -5,6 +5,9 @@ import com.googlecode.flickrjandroid.photos.PhotosInterface;
 import com.googlecode.flickrjandroid.photos.SearchParameters;
 import com.octo.android.robospice.request.SpiceRequest;
 
+/**
+ * Task for getting photos list from server.
+ */
 public class GetPhotosTask extends SpiceRequest<PhotoList> {
     public static final int PHOTOS_PER_PAGE = 40;
 
