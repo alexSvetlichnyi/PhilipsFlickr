@@ -157,7 +157,7 @@ public class PhotosListActivity extends AppCompatActivity implements OnPhotoSele
 
     private void initPhotosList() {
         photosList.setHasFixedSize(true);
-        photosList.setOnScrollListener(scrollListener);
+        photosList.addOnScrollListener(scrollListener);
 
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         photosList.setLayoutManager(layoutManager);

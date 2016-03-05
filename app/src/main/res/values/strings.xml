@@ -9,4 +9,5 @@
     <string name="photo_posted">Posted: %s</string>
     <string name="photo_user">" by user %s"</string>
     <string name="photo_last_update">Last updated: %s</string>
+    <string name="loading_photo_message">Loading Photo. Please wait...</string>
 </resources>

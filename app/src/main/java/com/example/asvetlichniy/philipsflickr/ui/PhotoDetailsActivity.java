@@ -1,5 +1,6 @@
 package com.example.asvetlichniy.philipsflickr.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -32,6 +33,7 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     private TextView photoDescription;
     private TextView posted;
     private TextView lastUpdated;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,11 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     }
 
     private void getPhotoDetails(String id, String secret) {
+        pDialog = new ProgressDialog(PhotoDetailsActivity.this);
+        pDialog.setMessage(getString(R.string.loading_photo_message));
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+        pDialog.show();
         GetPhotoInfoTask request = new GetPhotoInfoTask(FlickrHelper.getInstance().getPhotosInterface()
                 , id, secret);
         spiceManager.execute(request, new GetPhotoInfoListener());
@@ -87,11 +94,13 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     private class GetPhotoInfoListener implements RequestListener<Photo> {
         @Override
         public void onRequestFailure(SpiceException e) {
+            pDialog.dismiss();
             // Do Nothing
         }
 
         @Override
         public void onRequestSuccess(Photo photo) {
+            pDialog.dismiss();
             update(photo);
         }
     }
