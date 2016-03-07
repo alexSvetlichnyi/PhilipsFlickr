@@ -85,7 +85,7 @@ public class PhotosListActivity extends AppCompatActivity implements OnPhotoSele
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photo_list);
+        setContentView(R.layout.activity_photos);
         initViews();
         initPhotosList();
     }
